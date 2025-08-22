@@ -4,7 +4,6 @@
 	"main": "index.js",
 	"license": "MIT",
 	"devDependencies": {
-		"@eslint/js": "^9.33.0",
 		"@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
 		"@storybook/addon-essentials": "^8.0.5",
 		"@storybook/addon-interactions": "^8.0.5",
@@ -16,10 +15,6 @@
 		"@storybook/react-webpack5": "^8.0.5",
 		"@storybook/test": "^8.0.5",
 		"@svgr/webpack": "^8.0.1",
-		"@types/body-parser": "^1.19.6",
-		"@types/bonjour": "^3.5.13",
-		"@types/connect": "^3.4.38",
-		"@types/ejs": "^3.1.5",
 		"@types/react": "^18.2.0",
 		"@types/react-dom": "^18.2.1",
 		"@typescript-eslint/eslint-plugin": "^5.59.11",
@@ -31,18 +26,16 @@
 		"css-loader": "^6.8.1",
 		"cssnano": "^6.0.1",
 		"cz-conventional-changelog": "^3.3.0",
-		"eslint": "^8.57.1",
+		"eslint": "^8.42.0",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-import-resolver-typescript": "^3.6.1",
 		"eslint-plugin-eslint-comments": "^3.2.0",
 		"eslint-plugin-import": "^2.27.5",
 		"eslint-plugin-prettier": "^4.2.1",
-		"eslint-plugin-react": "^7.37.5",
+		"eslint-plugin-react": "^7.32.2",
 		"eslint-plugin-react-hooks": "^4.6.0",
-		"globals": "^16.3.0",
 		"html-webpack-plugin": "^5.5.1",
 		"husky": "^8.0.3",
-		"jiti": "^2.5.1",
 		"lint-staged": "^13.2.2",
 		"merge": "^2.1.1",
 		"mini-css-extract-plugin": "^2.7.6",
@@ -59,7 +52,6 @@
 		"stylelint-order": "^6.0.3",
 		"ts-loader": "^9.4.3",
 		"typescript": "^5.0.4",
-		"typescript-eslint": "^8.40.0",
 		"typescript-plugin-css-modules": "^5.0.1",
 		"url-loader": "^4.1.1",
 		"webpack": "^5.81.0",
@@ -85,7 +77,7 @@
 		]
 	},
 	"dependencies": {
-		"clsx": "^2.1.1",
+		"clsx": "^2.1.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
 	},
@@ -99,15 +91,5 @@
 			"path": "./node_modules/cz-conventional-changelog"
 		}
 	},
-	"homepage": "http://./",
-	"description": "[Макет проекта](https://www.figma.com/file/FEeiiGLOsE7ktXbPpBxYoD/Custom-dropdown?type=design&node-id=0%3A1&mode=design&t=eXRJnWC6Xsuw0qR4-1)",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Sergey-Panagushin/blog-customizer.git"
-	},
-	"author": "",
-	"bugs": {
-		"url": "https://github.com/Sergey-Panagushin/blog-customizer/issues"
-	},
-	"keywords": []
+	"homepage": "./"
 }

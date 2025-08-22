@@ -2,7 +2,6 @@ import arrow from 'src/images/arrow.svg';
 
 import styles from './ArrowButton.module.scss';
 import clsx from 'clsx';
-import { useState } from 'react';
 
 /** Функция для обработки открытия/закрытия формы */
 export type OnClick = () => void;
@@ -13,7 +12,6 @@ type ArrowButtonProps = {
 };
 
 export const ArrowButton = ({ isOpen, onClick }: ArrowButtonProps) => {
-	
 	return (
 		/* Не забываем указаывать role и aria-label атрибуты для интерактивных элементов */
 		<div
