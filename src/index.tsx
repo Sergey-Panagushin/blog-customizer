@@ -31,8 +31,8 @@ const App = () => {
 				} as CSSProperties
 			}>
 			<ArticleParamsForm 
-				articleState={articleState}	
-				onStateChange={updateArticleState} 
+					articleState={articleState}	
+					onStateChange={updateArticleState} 
 			/>
 			<Article />
 		</main>
