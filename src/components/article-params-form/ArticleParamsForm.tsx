@@ -1,5 +1,5 @@
 import { ArrowButton } from 'src/ui/arrow-button';
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { Button } from 'src/ui/button';
 import { Select } from 'src/ui/select';
 import clsx from 'clsx';
@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { RadioGroup } from 'src/ui/radio-group'; 
 import { Separator } from 'src/ui/separator';
 import { fontFamilyOptions, OptionType, fontSizeOptions, fontColors, backgroundColors, contentWidthArr, defaultArticleState } from 'src/constants/articleProps';
+import { useOutsideClickClose } from 'src/ui/select/hooks/useOutsideClickClose';
 
 interface ArticleParamsFormProps {
   articleState: typeof defaultArticleState;
@@ -18,16 +19,24 @@ export const ArticleParamsForm: FC<ArticleParamsFormProps> = ({
   articleState,
   onStateChange
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedFont, setSelectedFont] = useState<OptionType>(articleState.fontFamilyOption);
   const [selectedSize, setSelectedSize] = useState<OptionType>(articleState.fontSizeOption);
   const [selectedFontColor, setSelectedFontColor] = useState<OptionType>(articleState.fontColor);
   const [selectedBgColor, setSelectedBgColor] = useState<OptionType>(articleState.backgroundColor);
   const [selectedContentWidth, setSelectedContentWidth] = useState<OptionType>(articleState.contentWidth);
 
+  const asideRef = useRef<HTMLDivElement>(null);
+
+  useOutsideClickClose({
+    isOpen: isMenuOpen,
+    rootRef: asideRef,
+    onChange: setIsMenuOpen,
+  });
+
   const buttonApply = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const newState = {
       fontFamilyOption: selectedFont,
       fontColor: selectedFontColor,
@@ -36,7 +45,7 @@ export const ArticleParamsForm: FC<ArticleParamsFormProps> = ({
       fontSizeOption: selectedSize,
     };
     
-    onStateChange(newState); 
+    onStateChange(newState);
   };
 
   const handleReset = () => {
@@ -46,10 +55,6 @@ export const ArticleParamsForm: FC<ArticleParamsFormProps> = ({
     setSelectedBgColor(articleState.backgroundColor);
     setSelectedContentWidth(articleState.contentWidth);
     onStateChange(defaultArticleState); 
-  };
-
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
   };
 
 	const handleFontFamily = (newFont: OptionType) => {
@@ -74,11 +79,17 @@ export const ArticleParamsForm: FC<ArticleParamsFormProps> = ({
 
 	return (
 		<>
-			<ArrowButton isOpen={isOpen} onClick={handleToggle} />
-			<aside className={clsx(styles.container,{ [styles.container_open]: isOpen })}
+			<ArrowButton 
+			isOpen={isMenuOpen} 
+			onClick={() => setIsMenuOpen(!isMenuOpen)} 
+			/>
+			<aside 
+			ref={asideRef}
+			className={clsx(styles.container,
+			{ [styles.container_open]: isMenuOpen })}
 			onClick={(e) => e.stopPropagation()}>
 				
-				<form className={styles.form} >
+				<form className={styles.form} onSubmit={buttonApply}>
 					<h2 className={clsx(styles.title)}>Задайте параметры</h2>
 					<Select 
 						selected={selectedFont} 
@@ -114,7 +125,7 @@ export const ArticleParamsForm: FC<ArticleParamsFormProps> = ({
 					/>
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' htmlType='reset' type='clear' onClick={handleReset} />
-						<Button title='Применить' htmlType='submit' type='apply' onClick={buttonApply}/>
+						<Button title='Применить' htmlType='submit' type='apply'/>
 					</div>
 				</form>
 			</aside>
