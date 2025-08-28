@@ -10,10 +10,12 @@
 
 .container_open {
 	transform: translate(0);
+	transition: transform 0.5s ease;
 }
 
 .form {
 	display: flex;
+	gap: 50px;
 	flex-shrink: 0;
 	flex-direction: column;
 	box-sizing: border-box;
@@ -29,4 +31,12 @@
 	display: flex;
 	justify-content: space-between;
 	margin-top: auto;
+}
+
+.title {
+	display: flex;
+	font-size: 31px;
+	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+	font-weight: 800;
+	text-transform: uppercase;
 }
